@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import Code from "./Code";
 
+
+
 function ListCodes(props) {
+    const [name,setName]=useState("");
+
+
     return (
       <div>
         <h1>Lesson Codes</h1>

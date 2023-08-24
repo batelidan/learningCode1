@@ -5,9 +5,48 @@ const mongoose = require("mongoose");
 require('dotenv').config();
 const User = require('./schema');
 const cors = require('cors');
+const socketIO = require('socket.io');
+const http = require('http');
+
+app.use(cors());
+const server = http.createServer(app);
+const io = socketIO(server, {
+    cors: {
+      origin: "*",
+    },
+  });
+
+const mentorMap = new Map(); // Key: title, Value: mentor socket ID
+
+io.on('connection', (socket) => {
+  socket.on('userEnteredRoom', (data) => {
+    const { title } = data;
+     console.log("the room is:",data);
+     console.log(socket.id);
+    // Check if this is the first user entering the page
+    if (!mentorMap.has(title)) {
+      mentorMap.set(title, socket.id);
+      socket.emit('permissions', { role: 'mentor' }); // Emit mentor permissions
+      socket.on("disconnect",()=>{
+        mentorMap.delete(title);
+    console.log(mentorMap.get(title))
+      })
+   
+    } else{
+      socket.emit('permissions', { role: 'student' }); // Emit student permissions
+    } ;  
+});
+
+
+console.log("the connection is good")
+
+    
+
+
+});
+
 
 global.dbconn = "";
-app.use(cors());
 app.get('/', async (req, res) => {
     try {
       const data = await User.find(); 
@@ -18,21 +57,21 @@ app.get('/', async (req, res) => {
   }); 
 
 
-app.get('/title/:title', async (req, res) => {
-    const title = req.params.title;
+// app.get('/title/:title', async (req, res) => {
+//     const title = req.params.title;
   
-    try {
-      const data = await User.findOne({ title: title }); // Using findOne to retrieve a document by title
-      if (!data) {
-        res.status(404).json({ error: 'Object not found' });
-        return;
-      }
+//     try {
+//       const data = await User.findOne({ title: title }); // Using findOne to retrieve a document by title
+//       if (!data) {
+//         res.status(404).json({ error: 'Object not found' });
+//         return;
+//       }
       
-      res.json(data);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
+//       res.json(data);
+//     } catch (error) {
+//       res.status(500).json({ error: 'Internal server error' });
+//     }
+//   });
   
 
 
@@ -46,7 +85,7 @@ mongoose
   })
   .then(() => {
     console.log("Connected to MongoDB");
-    app.listen(process.env.PORT, () => {
+    server.listen(process.env.PORT, () => {
       console.log(`Server running on port ${process.env.PORT}.`);
     });
   })
