@@ -1,0 +1,25 @@
+
+.congratulations {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+
+  .smile-image {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+
+  .message {
+    font-size: 18px;
+    color: #333;
+  }
+  

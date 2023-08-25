@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
 import ListCodes from './ListCodes';
 import Code from "./Code";
+import "../css/lobbyPage.css";
 
 
 function LobbyPage() {
@@ -18,12 +19,9 @@ function LobbyPage() {
         });
     }, []);
   
-
-
-
   return (
     <Router>
-      <div>
+      <div className="lobby-page">
         <Routes>
           <Route path="/" element={<ListCodes items={items} />} />
           {items.map(item => (

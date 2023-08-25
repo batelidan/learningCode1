@@ -1,0 +1,21 @@
+.list-codes dl {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .list-codes dt {
+    margin-bottom: 10px;
+    
+  }
+  
+  .list-codes a {
+    text-decoration: none;
+    color: #5ca6f6;
+  }
+  
+  .list-codes a:hover {
+    text-decoration: underline;
+  }

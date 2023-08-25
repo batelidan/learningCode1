@@ -1,0 +1,15 @@
+.header {
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+  }
+  
+  .header h1 {
+    color: #333;
+  }
+  
+  .centered-paragraph {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+  }

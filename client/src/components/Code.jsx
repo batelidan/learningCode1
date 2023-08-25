@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { io } from "socket.io-client";
 import CodeDisplay from './CodeDisplay';
+import "../css/code.css";
+
 function Code(props){
     const [permissions,setPermissions]=useState("");
     const [editedCode, setEditedCode] = useState(props.lesson.incorrectCode);
@@ -28,12 +30,13 @@ function Code(props){
       }, []);
 
      
-    return(<div><h1>{props.lesson.title}</h1>
+    return(<div><h1 className="lesson-title">{props.lesson.title}</h1>
      
      <CodeDisplay
         role={permissions}
         code={props.lesson.incorrectCode}
-      />   
+        className={`CodeDisplay-code ${permissions === 'admin' ? 'admin' : 'user'}`}
+      />      
     </div>);
     
 }
