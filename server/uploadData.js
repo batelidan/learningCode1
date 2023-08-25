@@ -73,14 +73,7 @@ const data = [
         const sum = numbers.map(num => num + 1).reduce((total, num) => total + num, 0); // Incorrect: unnecessary map operation
         console.log("Sum:", sum); 
       `
-    },
-    {
-      key: 5,
-      title: "word",
-      correctCode: "a ",
-      incorrectCode: "b"
     }
-  
   ];
 
 async function uploadData() {

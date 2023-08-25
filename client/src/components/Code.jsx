@@ -7,7 +7,7 @@ import "../css/code.css";
 function Code(props){
     const [permissions,setPermissions]=useState("");
     const [editedCode, setEditedCode] = useState(props.lesson.incorrectCode);
-    const [socket,setSocekt]=useState(null);
+    const [socket,setSocekt]=useState('');
 
     
      useEffect(() => {

@@ -1,5 +1,5 @@
 import React from "react";
-import smile from "../SmileyFace.jpg";
+import smile from "../img/SmileyFace.jpg";
 import "../css/smileyFace.css";
 
 function SmileyFace(){
