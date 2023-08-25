@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import "../css/codeDisplay.css";
 import SmileyFace from './SmileyFace';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
 
 function CodeDisplay({ role, code , goodtCode,socket}) {
   const [newCode,setNewCode]=useState(code);
@@ -24,19 +27,23 @@ function CodeDisplay({ role, code , goodtCode,socket}) {
 
   return (
     <div className={`CodeDisplay-container ${role}`}>
-    <textarea
-      className="CodeDisplay-code"
-      value={role === "mentor"?code:newCode}
-      disabled={role === "mentor"}
-      onChange={(e)=>{
-        e.preventDefault();
-        onCodeChange(e.target.value);
-      }}
-      style={{
-        minHeight:'250px',
-        width:'400px'
-      }}
-    />
+      <SyntaxHighlighter
+        className="CodeDisplay-code"
+        language="javascript"
+        style={docco}
+      >
+        {role === "mentor" ? code : newCode}
+      </SyntaxHighlighter>
+      {role === "student" && (
+        <div>
+          <textarea
+            className="CodeDisplay-editable"
+            value={newCode}
+            onChange={(e) => onCodeChange(e.target.value)}
+            disabled={role === "mentor"}
+          />
+          </div>)}
+    
       {role==="student" ? <button className="button-container" onClick={handleClick}>send</button>: null}
       {isEqualCode===false && <p>Try Again!</p>}
       {isEqualCode && <SmileyFace/>}
