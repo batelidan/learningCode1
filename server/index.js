@@ -24,7 +24,7 @@ const onSocketDiconnectFunction = (socektId)=>{
         const room = clientMap.get(socektId);
         const isClientDeleted =clientMap.delete(socektId);
         if(isClientDeleted){
-            console.log(`Client from room ${room} disconncted`);
+            console.log(`The client of room ${room} disconncted`);
         } 
     }else{
         for(const [title,mentorSocket] of mentorMap.entries()){
@@ -38,45 +38,28 @@ const onSocketDiconnectFunction = (socektId)=>{
 
 
 io.on('connection', (socket) => {
-
     socket.on('userEditCode',(newCode)=>{
-        console.log("new code from client " , newCode);
         const currentTitle =clientMap.get(socket.id);
-        console.log("title is " , currentTitle)
         if(currentTitle){
             const mentorSocket = mentorMap.get(currentTitle);
-            console.log("mentor " , mentorSocket);
             io.to(mentorSocket).emit('newClientCode',newCode);
         }
     })
 
-
-
-
   socket.on('userEnteredRoom', (data) => {
-        console.log("the room is:",data);
         // Check if this is the first user entering the page
         if (!mentorMap.has(data)) {
             mentorMap.set(`${data}`, socket.id);
-            console.log("Mentor connected ");
             socket.emit('permissions', { role: 'mentor' }); // Emit mentor permissions
         } else{
             clientMap.set(`${socket.id}`, data);
-            console.log("Client connected ");
             socket.emit('permissions', { role: 'student' }); // Emit student permissions
         } ;  
     });
-
-
-
-    
     socket.on("disconnect",()=>{
         onSocketDiconnectFunction(socket.id);     
     })
-
-
 });
-
 
 global.dbconn = "";
 app.get('/', async (req, res) => {

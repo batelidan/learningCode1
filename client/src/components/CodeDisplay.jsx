@@ -20,9 +20,6 @@ function CodeDisplay({ role, code , goodtCode,socket}) {
 
   const handleClick = () => {
     setisEqualCode(goodtCode === newCode);
-    console.log("The value of flag is", newCode);
-    console.log("The value of flag is", goodtCode);
-    console.log("The value of flag is", isEqualCode);
   };
 
   return (

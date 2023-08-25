@@ -18,12 +18,10 @@ function Code(props){
           socket.emit('userEnteredRoom',props.lesson.title );
           socket.on('newClientCode',(newClientCode)=>{
             setEditedCode(newClientCode);
-            console.log("new code from client" ,newClientCode)
         })
           socket.on('permissions', (data) => {
             setPermissions(data.role)
-          
-            console.log(data.role)
+
           });
         });
         setSocekt(socket);

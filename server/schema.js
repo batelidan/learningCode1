@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-/* Creating the schema with name, email, password and date */
 const CodeSchema = new mongoose.Schema({
 	key: {
 	type: Number,
