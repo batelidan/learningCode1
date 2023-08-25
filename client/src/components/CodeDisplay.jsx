@@ -41,6 +41,10 @@ function CodeDisplay({ role, code , goodtCode,socket}) {
             value={newCode}
             onChange={(e) => onCodeChange(e.target.value)}
             disabled={role === "mentor"}
+            style={{
+              minHeight:'250px',
+              width:'400px',
+            }}
           />
           </div>)}
     
