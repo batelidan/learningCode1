@@ -33,3 +33,9 @@ body {
   .CodeDisplay-container.user {
     background-color: #d9edf7;
   }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Adjust as needed */
+  }

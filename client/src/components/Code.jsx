@@ -30,12 +30,15 @@ function Code(props){
       }, []);
 
      
-    return(<div><h1 className="lesson-title">{props.lesson.title}</h1>
-     
+    return(<div>
+        <h1>Hello I am a {permissions}</h1>
+        {permissions==="mentor" ? <h2 className="lesson-title"> Today we will learn about: {props.lesson.title}</h2> : null}
+
      <CodeDisplay
         role={permissions}
         code={props.lesson.incorrectCode}
-        className={`CodeDisplay-code ${permissions === 'admin' ? 'admin' : 'user'}`}
+        goodtCode={props.lesson.correctCode}
+        className={`CodeDisplay-code ${permissions === 'mentor' ? 'mentor' : 'student'}`}
       />      
     </div>);
     

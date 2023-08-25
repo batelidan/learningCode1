@@ -15,7 +15,16 @@ body {
     margin: 0;
   }
   
+    h2 {
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    margin: 0;
+  }
+  
 
+  
   .CodeDisplay-container {
     background-color: #fff;
     border: 1px solid #ccc;

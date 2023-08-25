@@ -57,26 +57,6 @@ app.get('/', async (req, res) => {
   }); 
 
 
-// app.get('/title/:title', async (req, res) => {
-//     const title = req.params.title;
-  
-//     try {
-//       const data = await User.findOne({ title: title }); // Using findOne to retrieve a document by title
-//       if (!data) {
-//         res.status(404).json({ error: 'Object not found' });
-//         return;
-//       }
-      
-//       res.json(data);
-//     } catch (error) {
-//       res.status(500).json({ error: 'Internal server error' });
-//     }
-//   });
-  
-
-
-
-
 /* Connected the app with mongoose */
 mongoose
   .connect(process.env.DB_CONNECT, {
