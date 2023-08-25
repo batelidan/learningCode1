@@ -37,7 +37,7 @@ function Code(props){
      
     return(<div>
         <h1>Hello I am a {permissions}</h1>
-        {permissions==="mentor" ? <h2 className="lesson-title"> Today we will learn about: {props.lesson.title}</h2> : null}
+        <h2 className="lesson-title"> Today we will learn about: {props.lesson.title}</h2> 
 
      <CodeDisplay
         role={permissions}
