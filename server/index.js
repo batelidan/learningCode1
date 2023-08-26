@@ -10,7 +10,6 @@ const http = require('http');
 const path = require('path'); 
 
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(cors());
 const server = http.createServer(app);
 const io = socketIO(server, {
