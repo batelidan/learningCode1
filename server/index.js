@@ -19,9 +19,8 @@ const io = socketIO(server, {
     },
   });
   app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/public/build/index.html"));
+    res.sendFile(path.join(__dirname + "/build/index.html"));
   });
-
 const mentorMap = new Map(); // Key: title, Value: mentor socket ID
 const clientMap =  new Map(); // key: client socketID => Value:title
 
