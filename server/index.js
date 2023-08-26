@@ -7,6 +7,8 @@ const User = require('./schema');
 const cors = require('cors');
 const socketIO = require('socket.io');
 const http = require('http');
+const path = require('path'); 
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
