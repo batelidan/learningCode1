@@ -11,7 +11,7 @@ function Code(props){
 
     
      useEffect(() => {
-        const socket = io('http://localhost:3001');
+        const socket = io('https://sleepy-fortress-74328-1833960bec9d.herokuapp.com/');
       
         socket.on('connect', () => {
           // Emit an event to notify the server that a user has entered the page

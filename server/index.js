@@ -7,6 +7,7 @@ const User = require('./schema');
 const cors = require('cors');
 const socketIO = require('socket.io');
 const http = require('http');
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 const server = http.createServer(app);
@@ -15,7 +16,11 @@ const io = socketIO(server, {
       origin: "*",
     },
   });
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/index.html"));
+  });
 
+  
 const mentorMap = new Map(); // Key: title, Value: mentor socket ID
 const clientMap =  new Map(); // key: client socketID => Value:title
 
