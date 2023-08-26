@@ -9,17 +9,16 @@ const socketIO = require('socket.io');
 const http = require('http');
 const path = require('path'); 
 
-app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 const server = http.createServer(app);
 const io = socketIO(server, {
-    cors: {
-      origin: "*",
-    },
-  });
-  app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/build/index.html"));
-  });
+  cors: {
+    origin: "*",
+  },
+});
+app.use(express.static(path.join(__dirname, "public")));
+
+
 const mentorMap = new Map(); // Key: title, Value: mentor socket ID
 const clientMap =  new Map(); // key: client socketID => Value:title
 
@@ -66,7 +65,7 @@ io.on('connection', (socket) => {
 });
 
 global.dbconn = "";
-app.get('/', async (req, res) => {
+app.get('/lessons', async (req, res) => {
     try {
       const data = await User.find(); 
       res.json(data);
@@ -74,6 +73,11 @@ app.get('/', async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     }
   }); 
+
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/index.html"));
+  });
+    
 
 
 /* Connected the app with mongoose */
