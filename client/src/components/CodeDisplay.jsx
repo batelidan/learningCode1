@@ -7,7 +7,7 @@ import SmileyFace from './SmileyFace';
 
 function CodeDisplay({ role, code , goodtCode,socket}) {
   const [newCode,setNewCode]=useState(code);
-  const [isEqualCode,setisEqualCode]=useState("false");
+  const [isEqualCode,setisEqualCode]=useState("");
   
   const onCodeChange = (updatedCode) => {
     // Perform any additional actions here if needed
