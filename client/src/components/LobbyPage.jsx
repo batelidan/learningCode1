@@ -12,7 +12,7 @@ function LobbyPage() {
       axios.get(`https://sleepy-fortress-74328-1833960bec9d.herokuapp.com/lessons`)
         .then((res) => {
           console.log(res.data);
-          // setItems(res.data);
+          setItems(res.data);
         })
         .catch((error) => {
           console.error("Fetch error:", error);
