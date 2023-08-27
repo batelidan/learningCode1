@@ -68,6 +68,7 @@ global.dbconn = "";
 app.get('/', async (req, res) => {
     try {
       const data = await User.find(); 
+      console.log(data)
       res.json(data);
     } catch (error) {
       res.status(500).json({ error: 'Internal server error' });
