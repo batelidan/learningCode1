@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import "../css/codeDisplay.css";
 import SmileyFace from './SmileyFace';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+ import SyntaxHighlighter from 'react-syntax-highlighter';
+ import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 
 function CodeDisplay({ role, code , goodtCode,socket}) {
   const [newCode,setNewCode]=useState(code);
-  const [isEqualCode,setisEqualCode]=useState("");
+  const [isEqualCode,setisEqualCode]=useState("false");
   
   const onCodeChange = (updatedCode) => {
     // Perform any additional actions here if needed

@@ -35,15 +35,15 @@ function Code(props){
      
     return(<div>
         <h1>Hello I am a {permissions}</h1>
-        <h2 className="lesson-title"> Today we will learn about: {props.lesson.title}</h2> 
+        {<h2 className="lesson-title"> Today we will learn about: {props.lesson.title}</h2> }
 
-     <CodeDisplay
+     {<CodeDisplay
         role={permissions}
         code={editedCode}
         goodtCode={props.lesson.correctCode}
         className={`CodeDisplay-code ${permissions === 'mentor' ? 'mentor' : 'student'}`}
         socket={socket}
-      />      
+      />       }
     </div>);
     
 }
