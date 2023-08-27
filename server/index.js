@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
 });
 
 global.dbconn = "";
-app.get('/lessons', async (req, res) => {
+app.get('/', async (req, res) => {
     try {
       const data = await User.find(); 
       res.json(data);
