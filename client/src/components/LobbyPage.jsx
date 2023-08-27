@@ -9,7 +9,7 @@ function LobbyPage() {
     const [items,setItems]=useState([]);
    
     useEffect(() => {
-      fetch("https://sleepy-fortress-74328-1833960bec9d.herokuapp.com/", {
+      fetch(`https://sleepy-fortress-74328-1833960bec9d.herokuapp.com/`, {
         method: "GET",
       })
         .then((res) => res.json())
