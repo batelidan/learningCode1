@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
 });
 
 global.dbconn = "";
-app.get('https://sleepy-fortress-74328-1833960bec9d.herokuapp.com/', async (req, res) => {
+app.get('/lessons', async (req, res) => {
     try {
       const data = await User.find(); 
       res.json(data);
